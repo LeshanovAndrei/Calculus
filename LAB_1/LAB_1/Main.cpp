@@ -3,8 +3,7 @@
 #include "Polynom.h"
 
 
-auto main() -> int
+int main()
 {
-	Polynom a;
 	return EXIT_SUCCESS;
 }

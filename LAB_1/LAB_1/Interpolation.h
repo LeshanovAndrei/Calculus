@@ -1,5 +1,8 @@
 #pragma once
 #include "Header.h"
+#include "Polynom.h"
+
+//class Polynom;
 
 class Computation
 {
@@ -31,11 +34,12 @@ class Lagrange_comp : public Computation
 {
 public:
 
-	void Polynom_calculate();
-	double Value_in_point(double x);
+	virtual void Polynom_calculate();
+	virtual double Value_in_point(double x);
 
 private:
-	Polynom& l_i(int i);
+
+	auto l_i(int i)->Polynom&;
 
 
 	Polynom Lag_pol;
@@ -45,8 +49,8 @@ class Newton_comp : public Computation
 {
 public:
 
-	void Polynom_calculate();
-	double Value_in_point(double x);
+	virtual void Polynom_calculate();
+	virtual double Value_in_point(double x);
 
 private:
 

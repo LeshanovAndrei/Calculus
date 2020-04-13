@@ -1,5 +1,3 @@
-#include "Header.h"
-#include "Interpolation.h"
 #include "Polynom.h"
 
 template<typename T>
@@ -25,7 +23,7 @@ T min(T a, T b)
 
 
 /*
-Высшие степени в конце вектора
+Высшие степени в начале вектора
 
 */
 

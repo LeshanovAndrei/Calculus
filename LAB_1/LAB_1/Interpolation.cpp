@@ -1,6 +1,4 @@
-#include "Header.h"
 #include "Interpolation.h"
-#include "Polynom.h"
 
 double Lagrange_comp::Value_in_point(double x)
 {
@@ -13,6 +11,7 @@ double Lagrange_comp::Value_in_point(double x)
 	{
 		res += pow(x, Lag_pol.nodes[i].degree) * Lag_pol.nodes[i].odd;
 	}
+	return res;
 }
 
 Polynom& Lagrange_comp::l_i(int i)
