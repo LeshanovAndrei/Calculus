@@ -1,4 +1,6 @@
 #include "Header.h"
+#include "Interpolation.h"
+#include "Polynom.h"
 
 template<typename T>
 T max(T a, T b)
@@ -81,6 +83,16 @@ T min(T a, T b)
 		for (size_t i = 0; i < nodes.size(); i++)
 		{
 			res->nodes[i].odd /= p;
+		}
+		return *res;
+	}
+
+	Polynom& Polynom::operator*(double p)
+	{
+		Polynom* res = new Polynom(*this);
+		for (size_t i = 0; i < nodes.size(); i++)
+		{
+			res->nodes[i].odd *= p;
 		}
 		return *res;
 	}

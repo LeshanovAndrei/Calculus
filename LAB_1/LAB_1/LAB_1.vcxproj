@@ -138,12 +138,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interpolation.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Polynom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
     <ClInclude Include="Interpolation.h" />
+    <ClInclude Include="Polynom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
