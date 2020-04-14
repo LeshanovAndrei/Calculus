@@ -8,44 +8,44 @@ template<typename T>
 T min(T a, T b);
 
 
-struct node
+struct poly_node
 {
 public:
-	node(double a, int b) : degree(b), odd(a) {}
-	node& operator*(node a)
+	poly_node(double a, int b) : degree(b), odd(a) {}
+	poly_node& operator*(poly_node a)
 	{
-		node* res = new node(*this);
+		poly_node* res = new poly_node(*this);
 		res->degree += a.degree;
 		res->odd *= a.odd;
 		return *res;
 	}
-	node& operator/(node a)
+	poly_node& operator/(poly_node a)
 	{
-		node* res = new node(*this);
+		poly_node* res = new poly_node(*this);
 		res->degree -= a.degree;
 		res->odd /= a.odd;
 		return *res;
 	}
-	bool operator>(node a)
+	bool operator>(poly_node a)
 	{
 		if (degree > a.degree)
 			return 1;
 		return 0;
 	}
 
-	bool operator<(node a)
+	bool operator<(poly_node a)
 	{
 		if (degree < a.degree)
 			return 1;
 		return 0;
 	}
-	bool operator>=(node a)
+	bool operator>=(poly_node a)
 	{
 		if (degree >= a.degree)
 			return 1;
 		return 0;
 	}
-	bool operator<=(node a)
+	bool operator<=(poly_node a)
 	{
 		if (degree <= a.degree)
 			return 1;
@@ -61,7 +61,7 @@ public:
 class Polynom
 {
 public:
-	Polynom(vector<node>& nodess) : nodes(nodess) { polynomial_simplification(); }
+	Polynom(vector<poly_node>& nodess) : nodes(nodess) { polynomial_simplification(); }
 	Polynom() {}
 	~Polynom();
 	//Polynom& operator=(Polynom p);
@@ -81,6 +81,6 @@ private:
 
 
 	void polynomial_simplification();
-	vector<node> nodes;
+	vector<poly_node> nodes;
 };
 

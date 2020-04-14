@@ -5,9 +5,8 @@
 
 int main()
 {
-	vector<double> points({ -2, -1, 0, 1, 3 });
-	vector<double> values({ 0, 3, 5, 7, 4 });
-	Lagrange_comp c(points, values);
+	vector<int_node> points({ {-2,0}, {-1, 3}, {0,5}, {1,7}, {3, 4} });
+	Lagrange_comp c(points);
 	c.Polynom_calculate();
 	c.Print();
 	return EXIT_SUCCESS;

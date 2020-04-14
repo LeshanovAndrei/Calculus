@@ -3,16 +3,22 @@
 #include "Polynom.h"
 
 
+struct int_node
+{
+	double x;
+	double y;
+	void operator=(int_node a) { x = a.x; y = a.y; }
+};
+
 class Computation
 {
 protected:
-	Computation(vector<double> interpolation_nodes, vector<double> values_in_nodes);
+	Computation(vector<int_node> interpolation_nodes);
 
 	virtual void Polynom_calculate() = 0;
 	virtual double Value_in_point(double x) = 0;
 
-	vector<double> interpolation_nodes;
-	vector<double> values_in_nodes;
+	vector<int_node> interpolation_nodes;
 	int n;
 	bool calculated;
 
@@ -21,7 +27,7 @@ protected:
 class Lagrange_comp : public Computation
 {
 public:
-	Lagrange_comp(vector<double> interpolation_nodes, vector<double> values_in_nodes) :Computation(interpolation_nodes, values_in_nodes) {}
+	Lagrange_comp(vector<int_node> interpolation_nodes) :Computation(interpolation_nodes) {}
 	virtual void Polynom_calculate();
 	virtual double Value_in_point(double x);
 	void Print() { if (calculated) Lag_pol.Print(); }
@@ -44,9 +50,10 @@ public:
 	
 
 private:
-	
-	Polynom New_in_div_diff;
-	Polynom New_in_fin_diff;
+	Polynom& Newton_poly_forward();
+	double divided_diff(vector<int_node>);
+	Polynom New_pol_forward;
+	Polynom New_pol_backward;
 };
 
 
