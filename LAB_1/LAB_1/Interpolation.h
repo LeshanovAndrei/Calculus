@@ -2,23 +2,11 @@
 #include "Header.h"
 #include "Polynom.h"
 
-//class Polynom;
 
 class Computation
 {
 protected:
-	Computation(vector<double> interpolation_nodes, vector<double> values_in_nodes) :
-		interpolation_nodes(interpolation_nodes),
-		values_in_nodes(values_in_nodes),
-		calculated(0)
-	{
-		n = interpolation_nodes.size();
-		if (n == values_in_nodes.size())
-		{
-			cout << "Error input!\n";
-			exit(1);
-		}
-	}
+	Computation(vector<double> interpolation_nodes, vector<double> values_in_nodes);
 
 	virtual void Polynom_calculate() = 0;
 	virtual double Value_in_point(double x) = 0;
@@ -33,17 +21,19 @@ protected:
 class Lagrange_comp : public Computation
 {
 public:
-
+	Lagrange_comp(vector<double> interpolation_nodes, vector<double> values_in_nodes) :Computation(interpolation_nodes, values_in_nodes) {}
 	virtual void Polynom_calculate();
 	virtual double Value_in_point(double x);
-
+	void Print() { if (calculated) Lag_pol.Print(); }
 private:
 
-	auto l_i(int i)->Polynom&;
+	Polynom& l_i(int i);
 
 
 	Polynom Lag_pol;
 };
+
+
 
 class Newton_comp : public Computation
 {
@@ -51,10 +41,12 @@ public:
 
 	virtual void Polynom_calculate();
 	virtual double Value_in_point(double x);
+	
 
 private:
-
-	Polynom New_pol;
+	
+	Polynom New_in_div_diff;
+	Polynom New_in_fin_diff;
 };
 
 

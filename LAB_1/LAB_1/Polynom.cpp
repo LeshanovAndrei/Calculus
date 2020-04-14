@@ -96,16 +96,21 @@ T min(T a, T b)
 	}
 
 
-	void Polynom::polynomial_simplification() 
+	void Polynom::polynomial_simplification()
 	{
 		sort(nodes.begin(), nodes.end());
 		reverse(nodes.begin(), nodes.end());
+		if (nodes.size())
+		{
+
+		
 		for (int i = 0; i < nodes.size() - 1; i++)
 		{
-			if (nodes[i].degree  == nodes[i+1].degree)
+			if (nodes[i].degree == nodes[i + 1].degree)
 			{
 				nodes[i].odd += nodes[i + 1].odd;
 				nodes.erase(nodes.begin() + i + 1);
+				if (i)
 				--i;
 			}
 			if (nodes[i].odd == 0)
@@ -117,6 +122,7 @@ T min(T a, T b)
 		{
 			nodes.erase(nodes.end() - 1);
 		}
+	}
 	}
 
 	void Polynom::Print()

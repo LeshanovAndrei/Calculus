@@ -1,5 +1,21 @@
 #include "Interpolation.h"
 
+
+Computation::Computation(vector<double> interpolation_nodes, vector<double> values_in_nodes):
+	interpolation_nodes(interpolation_nodes),
+	values_in_nodes(values_in_nodes),
+	calculated(0)
+{
+	n = interpolation_nodes.size();
+	if (n != values_in_nodes.size())
+	{
+		cout << "Error input!\n";
+		exit(1);
+	}
+}
+
+
+
 double Lagrange_comp::Value_in_point(double x)
 {
 	double res = 0;
@@ -16,12 +32,12 @@ double Lagrange_comp::Value_in_point(double x)
 
 Polynom& Lagrange_comp::l_i(int i)
 {
-	Polynom* res = new Polynom;
-	for (int j = 0; j < n; i++)
+	Polynom* res = new Polynom(*(new vector<node>({ {1, 0} })));
+	for (int j = 0; j < n; j++)
 	{
 		if (j != i)
 		{
-			Polynom* tmp = new Polynom(*(new vector<node>({ {interpolation_nodes[j], 0},  {1, 1} })));
+			Polynom* tmp = new Polynom(*(new vector<node>({ {-interpolation_nodes[j], 0},  {1, 1} })));
 			*tmp = *tmp / (interpolation_nodes[i] - interpolation_nodes[j]);
 			*res = *res * *tmp;
 		}
