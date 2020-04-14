@@ -64,3 +64,41 @@ double Newton_comp::divided_diff(vector<int_node> ixys)
 	}
 	return (divided_diff(tmp1)- divided_diff(tmp2))/ (ixys[0].x - ixys[ixys.size() - 1].x);
 }
+
+
+void Newton_comp::Polynom_calculate()
+{
+	New_pol_forward = Newton_poly_forward();
+	New_pol_backward = Newton_poly_backward();
+	calculated = 1;
+}
+
+Polynom& Newton_comp::Newton_poly_backward()
+{
+	Polynom* res = new Polynom(*(new vector<poly_node>({ {interpolation_nodes[n].y, 0} })));
+	vector<int_node> tmp;
+	tmp.push_back(interpolation_nodes[n]);
+	Polynom tmpp(*(new vector<poly_node>({ {1, 0} })));
+	for (int i = n; i >= 0; i--)
+	{
+		tmpp = tmpp * *(new Polynom(*(new vector<poly_node>({ {1, 1}, {-interpolation_nodes[i - 1].x ,0} }))));
+		tmp.push_back(interpolation_nodes[i]);
+		*res = *res + (tmpp * divided_diff(tmp));
+	}
+	return *res;
+}
+
+Polynom& Newton_comp::Newton_poly_forward()
+{
+	Polynom* res = new Polynom(*(new vector<poly_node>({ {interpolation_nodes[0].y, 0} })));
+	vector<int_node> tmp;
+	tmp.push_back(interpolation_nodes[0]);
+	Polynom tmpp(*(new vector<poly_node>({ {1, 0} })));
+	for (size_t i = 1; i < n; i++)
+	{
+		tmpp = tmpp * *(new Polynom(*(new vector<poly_node>({ {1, 1}, {-interpolation_nodes[i - 1].x ,0} }))));
+		tmp.push_back(interpolation_nodes[i]);
+		*res = *res + (tmpp * divided_diff(tmp));
+	}
+	return *res;
+}
