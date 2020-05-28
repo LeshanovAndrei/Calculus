@@ -5,10 +5,12 @@
 
 int main()
 {
-	vector<double> points({ -2, -1, 0, 1, 3 });
-	vector<double> values({ 0, 3, 5, 7, 4 });
-	Lagrange_comp c(points, values);
-	c.Polynom_calculate();
-	c.Print();
+	vector<int_node> points({ {-2,0}, {-1, 3}, {0,5}, {1,7}, {2, 4} });
+	Newton_comp newton(points);
+	Lagrange_comp lagr(points);
+	newton.Polynom_calculate();
+	lagr.Polynom_calculate();
+	lagr.Print();
+	newton.Print();
 	return EXIT_SUCCESS;
 }

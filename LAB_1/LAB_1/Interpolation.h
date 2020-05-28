@@ -38,10 +38,10 @@ private:
 class Newton_comp : public Computation
 {
 public:
-
-	virtual void Polynom_calculate();
-	virtual double Value_in_point(double x);
-	
+	Newton_comp(vector<int_node>);
+	void Polynom_calculate();
+	double Value_in_point(double x);
+	void Print();
 
 private:
 	
