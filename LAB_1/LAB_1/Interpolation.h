@@ -51,7 +51,6 @@ public:
 
 private:
 	Polynom& Newton_poly_forward();
-	Polynom& Newton_poly_backward();
 	double divided_diff(vector<int_node>);
 	Polynom New_pol_forward;
 	Polynom New_pol_backward;
