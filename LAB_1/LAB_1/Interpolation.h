@@ -44,10 +44,10 @@ private:
 class Newton_comp : public Computation
 {
 public:
-
+	Newton_comp(vector<int_node> interpolation_nodes) :Computation(interpolation_nodes) {}
 	virtual void Polynom_calculate();
 	virtual double Value_in_point(double x);
-	
+	void Print() { if (calculated) { New_pol_forward.Print();  New_pol_backward.Print(); } }
 
 private:
 	Polynom& Newton_poly_forward();

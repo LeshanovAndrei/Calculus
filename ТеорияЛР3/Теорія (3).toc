@@ -1,0 +1,10 @@
+\babel@toc {ukrainian}{}
+\contentsline {section}{Постановка задачі}{3}%
+\contentsline {section}{\numberline {1.\relax }Основні теоретичні відомості}{4}%
+\contentsline {subsection}{\numberline {1.1.\relax }Методи відокремлення дійсних коренів}{4}%
+\contentsline {subsection}{\numberline {1.2.\relax }Загальна ідея ітераційних методів уточнення кореня}{6}%
+\contentsline {subsection}{\numberline {1.3.\relax }Геометричне зображення ітераційних методів}{9}%
+\contentsline {subsection}{\numberline {1.4.\relax }Метод простої ітерації}{11}%
+\contentsline {subsection}{\numberline {1.5.\relax }Метод Ньютона}{13}%
+\contentsline {subsection}{\numberline {1.6.\relax }Метод хорд}{15}%
+\contentsline {subsection}{\numberline {1.7.\relax }Комбінований метод}{17}%
