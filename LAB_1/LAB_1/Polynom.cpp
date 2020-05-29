@@ -127,9 +127,10 @@ T min(T a, T b)
 
 	void Polynom::Print()
 	{
+		
 		for (int i = 0; i < nodes.size() - 1; i++)
 		{
-			cout << nodes[i].odd << "x^" << nodes[i].degree;
+			cout  << nodes[i].odd << "x^" << nodes[i].degree;
 			if (nodes[i + 1].odd >= 0)
 			{
 				cout << " + ";
