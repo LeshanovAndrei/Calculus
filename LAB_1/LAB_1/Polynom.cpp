@@ -142,3 +142,13 @@ T min(T a, T b)
 		}
 		cout << nodes[nodes.size() - 1].odd << "x^" << nodes[nodes.size() - 1].degree << "\n";
 	}
+
+	double Polynom::value_in_point(double x)
+	{
+		double res = 0;
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			res += pow(x, nodes[i].degree) * nodes[i].odd;
+		}
+		return res;
+	}

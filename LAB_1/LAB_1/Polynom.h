@@ -72,6 +72,7 @@ public:
 	//Polynom& operator/(Polynom p); // »ƒ≈“ Õ¿’≈–
 	Polynom& operator/(double p);
 	Polynom& operator*(double p);
+	double value_in_point(double x);
 	friend class Computation;
 	friend class Lagrange_comp;
 	friend class Newton_comp;

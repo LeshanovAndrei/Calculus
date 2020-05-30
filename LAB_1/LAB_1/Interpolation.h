@@ -75,7 +75,7 @@ public:
 			Smallest_squaró_pol.Print();
 	}
 	virtual double Value_in_point(double x);
-
+	double Error();
 private:
 	Polynom& Smallest_squar();
 	int m;

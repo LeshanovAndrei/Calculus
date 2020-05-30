@@ -17,7 +17,7 @@ double Lagrange_comp::Value_in_point(double x)
 	{
 		Polynom_calculate();
 	}
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		res += pow(x, Lag_pol.nodes[i].degree) * Lag_pol.nodes[i].odd;
 	}
@@ -112,7 +112,7 @@ double Newton_comp::Value_in_point(double x)
 	{
 		Polynom_calculate();
 	}
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		res += pow(x, New_pol_forward.nodes[i].degree) * New_pol_forward.nodes[i].odd;
 	}
@@ -152,7 +152,7 @@ double Smallest_square::Value_in_point(double x)
 	{
 		Polynom_calculate();
 	}
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		res += pow(x, Smallest_squaró_pol.nodes[i].degree) * Smallest_squaró_pol.nodes[i].odd;
 	}
@@ -192,4 +192,14 @@ Polynom& Smallest_square::Smallest_squar()
 	}
 	Polynom* result = new Polynom(tmp);
 	return *result;
+}
+
+double Smallest_square::Error()
+{
+	double res = 0;
+	for (int i = 0; i <= n; i++)
+	{
+		res += interpolation_nodes[i].y - Smallest_squaró_pol.value_in_point(interpolation_nodes[i].x);
+	}
+	return res;
 }
