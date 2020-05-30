@@ -51,6 +51,7 @@ public:
 
 private:
 	Polynom& Newton_poly_forward();
+	Polynom& Newton_poly_backward();
 	double divided_diff(vector<int_node>);
 	Polynom New_pol_forward;
 	Polynom New_pol_backward;
@@ -58,13 +59,27 @@ private:
 
 
 
-//уг бннаые врн рср опнхяундхр йюйхе-рн яреоемх л м ъ ме унвс дюире опнярн онявхрюрэ
+
 class Smallest_square : public Computation
 {
 public:
-
-
+	Smallest_square(vector<int_node> interpolation_nodes):
+	Computation(interpolation_nodes)
+	{
+		m = n;
+	}
+	virtual void Polynom_calculate();
+	void Print() 
+	{
+		if (calculated)
+			Smallest_squarС_pol.Print();
+	}
+	virtual double Value_in_point(double x);
 
 private:
-
+	Polynom& Smallest_squar();
+	int m;
+	double c_j(int j);
+	double d_j(int j);
+	Polynom Smallest_squarС_pol;
 };

@@ -77,9 +77,6 @@ public:
 	friend class Newton_comp;
 	friend class Smallest_square;
 private:
-
-
-
 	void polynomial_simplification();
 	vector<poly_node> nodes;
 };

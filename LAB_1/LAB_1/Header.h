@@ -8,3 +8,4 @@
 #include <cmath>
 
 using namespace std;
+double* Gauss(double**, int n, int m);

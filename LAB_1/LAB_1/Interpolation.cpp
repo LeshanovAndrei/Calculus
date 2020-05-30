@@ -118,3 +118,78 @@ double Newton_comp::Value_in_point(double x)
 	}
 	return res;
 }
+
+void Smallest_square::Polynom_calculate()
+{
+	Smallest_squaró_pol = Smallest_squar();
+	calculated = 1;
+}
+
+double Smallest_square::c_j(int j)
+{
+	double res = 0;
+	for (size_t i = 0; i <= n; i++)
+	{
+		res += pow(interpolation_nodes[i].x, j);
+	}
+	return res;
+}
+
+double Smallest_square::d_j(int j)
+{
+	double res = 0;
+	for (size_t i = 0; i <= n; i++)
+	{
+		res += pow(interpolation_nodes[i].x, j) * interpolation_nodes[i].y;
+	}
+	return res;
+}
+
+double Smallest_square::Value_in_point(double x)
+{
+	double res = 0;
+	if (!calculated)
+	{
+		Polynom_calculate();
+	}
+	for (int i = 0; i < n; i++)
+	{
+		res += pow(x, Smallest_squaró_pol.nodes[i].degree) * Smallest_squaró_pol.nodes[i].odd;
+	}
+	return res;
+}
+Polynom& Smallest_square::Smallest_squar()
+{
+	m = n;
+	double** matrix = new double* [m + 1];//ÍÅ ÓÂÅÐÅÍ 
+	for (int i = 0; i <= m; i++)
+		matrix[i] = new double[m + 2];//ÍÅ ÓÂÅÐÅÍ
+	for (size_t i = 0; i <= m; i++)
+	{
+		for (size_t j = 0; j <= m; j++)
+		{
+			matrix[i][j] = c_j(j + i);
+		}
+	}
+	for (size_t i = 0; i <= m; i++)
+	{
+		matrix[i][m + 1] = d_j(i);
+	}
+	/*cout << "matrix: " << endl;
+	for (int i = 0; i < m + 1; i++)
+	{
+		for (int j = 0; j < m + 2; j++)
+			cout << matrix[i][j] << " ";
+		cout << endl;
+	}*/
+	double* odds = new double[m + 1];
+	odds = Gauss(matrix, m + 1, m + 1);
+	//cout << endl;
+	vector<poly_node> tmp;
+	for (int i = 0; i <= m; i++)
+	{
+		tmp.push_back({ odds[i], i });
+	}
+	Polynom* result = new Polynom(tmp);
+	return *result;
+}
